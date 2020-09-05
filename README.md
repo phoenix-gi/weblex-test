@@ -8,11 +8,9 @@ My solution of test task for WebleX company
 * 3. Initialize MySQL database
 * 4. Run server
 
-Note: if you using root as login, you should run php using sudo
-
 ### 1. How to install npm modules
 
-* Just run this command:
+* Just run install node modules command:
 
 ```sh
 $ npm install
@@ -35,6 +33,8 @@ $ npm run webpack
 ```sh
 $ php build/init.php
 ```
+
+Note: if you using root as login, you should run php using sudo
 
 ### 4. How to run server
 
