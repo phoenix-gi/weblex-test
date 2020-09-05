@@ -1,26 +1,45 @@
 # weblex-test
-My solution of test task for Weblex company
+My solution of test task for WebleX company
 
 ### Steps to run
 
-* 1. Initialize MySQL database
-* 2. Run server
+* 1. Install npm modules
+* 2. Run webpack to build sources
+* 3. Initialize MySQL database
+* 4. Run server
 
-### How to initialize MySQL database
+Note: if you using root as login, you should run php using sudo
+
+### 1. How to install npm modules
+
+* Just run this command:
+
+```sh
+$ npm install
+```
+
+### 2. How to build
+
+* Just run webpack:
+
+```sh
+$ npm run webpack
+```
+
+### 3. How to initialize MySQL database
 
 * First, set login and password in file src/php/init.php
 
 * Then run via php file src/php/init.php
 
 ```sh
-$ php src/php/init.php
+$ php build/init.php
 ```
 
-### How to run server
+### 4. How to run server
 
-* Just run server.php via php and open http://localhost:8080 in your browser:
+* Just run build/server.php and open http://localhost:8080 in your browser:
 
 ```sh
-$ php -S localhost:8080 src/php/server.php
+$ php -S localhost:8080 build/server.php
 ```
-

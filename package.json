@@ -4,7 +4,8 @@
   "description": "My solution of test task for Weblex company",
   "main": "src/js/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/phoenix-gi/weblex-test/issues"
   },
-  "homepage": "https://github.com/phoenix-gi/weblex-test#readme"
+  "homepage": "https://github.com/phoenix-gi/weblex-test#readme",
+  "dependencies": {
+    "webpack": "~4.44.1",
+    "webpack-cli": "~3.3.12",
+    "html-webpack-plugin": "~4.4.1",
+    "clean-webpack-plugin": "~3.0.0",
+    "copy-webpack-plugin": "~6.1.0"
+  }
 }

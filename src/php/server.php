@@ -1,6 +1,6 @@
 <?php
 if($_SERVER["REQUEST_URI"] == "/") {
-    include "src/php/index.php";
+    include "index.php";
 } else {
     return false;
 }
