@@ -1,0 +1,20 @@
+{
+  "name": "weblex-test",
+  "version": "1.0.0",
+  "description": "My solution of test task for Weblex company",
+  "main": "src/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phoenix-gi/weblex-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phoenix-gi/weblex-test/issues"
+  },
+  "homepage": "https://github.com/phoenix-gi/weblex-test#readme"
+}
