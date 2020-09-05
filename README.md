@@ -26,7 +26,7 @@ $ npm run webpack
 
 ### 3. How to initialize MySQL database
 
-* First, set login and password in file src/php/init.php
+* First, set MySQL login and password in file src/php/settings.php
 
 * Then run via php file src/php/init.php
 
