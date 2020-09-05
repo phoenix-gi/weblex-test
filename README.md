@@ -28,13 +28,17 @@ $ npm run webpack
 
 * First, set MySQL login and password in file src/php/settings.php
 
+* Then rebuild project (run webpack)
+
 * Then run via php file src/php/init.php
 
 ```sh
 $ php build/init.php
 ```
 
-Note: if you using root as login, you should run php using sudo
+Note: don't use root mysql user, create another user with some password
+
+Warning: create your user properly and everything will work
 
 ### 4. How to run server
 
