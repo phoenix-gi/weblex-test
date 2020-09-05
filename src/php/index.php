@@ -4,9 +4,8 @@
             Single page application
         </title>
     </head>
-    <body>      
-        <?php 
-            echo "<h1>INDEX.PHP</h1>";
-        ?>
+    <body>
+        <div id="react-dom-root">
+        </div>
     </body>
 </html>
