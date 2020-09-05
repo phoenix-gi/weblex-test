@@ -1,0 +1,9 @@
+#main_table {
+    border-collapse: collapse;
+}
+#main_table th {
+    border: 1px solid red;
+}
+#main_table td {
+    border: 1px solid green;
+}

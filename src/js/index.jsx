@@ -1,3 +1,5 @@
+require('../css/styles.css');
+
 const React = require('react');
 const ReactDom = require('react-dom');
 
@@ -39,7 +41,7 @@ class MainTable extends React.Component {
         }
 
         return (
-            <table>
+            <table id="main_table">
                 <tr>
                     <th>Дата</th>
                     <th>Название</th>
