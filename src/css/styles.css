@@ -7,3 +7,18 @@
 #main_table td {
     border: 1px solid green;
 }
+
+.page_button {
+    display: inline-block;
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+.page_button:hover {
+    background-color: gray;
+    cursor: pointer;
+}
+
+.page_button_selected {
+    background-color: blue;
+}
