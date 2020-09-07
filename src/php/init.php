@@ -11,7 +11,7 @@ function init_database($mysqli, $db_name, $table_name) {
     if($db_created) {
         $mysqli->select_db($db_name);
         echo "Creating table $table_name...\n";
-        $table_created = $mysqli->query("CREATE TABLE IF NOT EXISTS $table_name(date DATE, name varchar(256), amount INT, distance FLOAT)");
+        $table_created = $mysqli->query("CREATE TABLE IF NOT EXISTS $table_name(date DATE, name varchar(256), amount INT, distance DECIMAL(18,12))");
     }
 }
 
