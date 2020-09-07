@@ -20,7 +20,6 @@ class Application extends React.Component {
     }
 
     getTableData(filterParams = []) {
-        console.log(filterParams);
         let filter = "";
         for(let i = 0; i < filterParams.length; i++) {
             let param = filterParams[i];
