@@ -48,8 +48,14 @@ class Filter extends React.Component {
                     Условие:
                     <select value={this.state.condition} onChange={this.onChangeCondition.bind(this)}>
                         <option value="equals">Равно</option>
-                        <option value="greater">Больше</option>
-                        <option value="less">Меньше</option>
+                        {
+                            this.state.field!="name" ? 
+                                [
+                                    <option value="greater">Больше</option>,
+                                    <option value="less">Меньше</option>
+                                ]
+                            : []
+                        }
                         <option value="like">Содержит</option>
                     </select>
                 </div>
