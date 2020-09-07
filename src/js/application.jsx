@@ -14,11 +14,13 @@ class Application extends React.Component {
             dataLoaded: false,
             currentPage: 0,
             numberOfPages: 1,
-            rowsPerPage: 5
+            rowsPerPage: 5,
+            error: false
         };
     }
 
     getTableData(filterParams = []) {
+        console.log(filterParams);
         let filter = "";
         for(let i = 0; i < filterParams.length; i++) {
             let param = filterParams[i];
@@ -31,18 +33,24 @@ class Application extends React.Component {
         if(filter != "") {
             url += "&" + filter;
         }
-        axios.get(url).then(request => {
-            if(request.status == 200) {
-                let numberOfPages = Math.ceil(request.data.length / this.state.rowsPerPage);
-                this.setState({
-                    weblexTable: request.data,
-                    dataLoaded: true,
-                    numberOfPages: numberOfPages,
-                    currentPage: 0
-                });
-            }
+        (Promise.resolve().then(() => {
+            this.setState({dataLoaded: false});
+        })).then(() => {
+            axios.get(url).then(request => {
+                if(request.status == 200) {
+                    let numberOfPages = Math.ceil(request.data.length / this.state.rowsPerPage);
+                    this.setState({
+                        weblexTable: request.data,
+                        dataLoaded: true,
+                        numberOfPages: numberOfPages,
+                        currentPage: 0,
+                        error: false
+                    });
+                }
+            }).catch(request => {
+                this.setState({error: true, weblexTable: [], numberOfPages: 0});
+            });
         });
-        this.setState({dataLoaded: false});
     }
 
     currentPageChanged(selectedPage) {
@@ -75,6 +83,7 @@ class Application extends React.Component {
                 <MainTable didMount={this.getTableData.bind(this)}
                            dataLoaded={dataLoaded}
                            weblexTable={rows}
+                           error={this.state.error}
                 />
                 <Pagination numberOfPages={numberOfPages}
                             currentPage={currentPage}

@@ -15,15 +15,29 @@ class MainTable extends React.Component {
 
     render() {
         let rows = [];
+        if(this.props.error) {
+            return <p>При запросе данных произошла ошибка!</p>;
+        }
+
         if(this.props.dataLoaded) {
-            for(i in this.props.weblexTable) {
-                let rowData = this.props.weblexTable[i];
-                rows.push(
+            if(this.props.weblexTable.length != 0) {
+                for(i in this.props.weblexTable) {
+                    let rowData = this.props.weblexTable[i];
+                    rows.push(
+                        <tr>
+                            <td>{rowData.date}</td>
+                            <td>{rowData.name}</td>
+                            <td>{rowData.amount}</td>
+                            <td>{rowData.distance}</td>
+                        </tr>
+                    );
+                }
+            } else {
+                rows = (
                     <tr>
-                        <td>{rowData.date}</td>
-                        <td>{rowData.name}</td>
-                        <td>{rowData.amount}</td>
-                        <td>{rowData.distance}</td>
+                        <td colspan="4">
+                            Данных нет
+                        </td>
                     </tr>
                 );
             }
@@ -31,7 +45,7 @@ class MainTable extends React.Component {
             rows = (
                 <tr>
                     <td colspan="4">
-                        Loading...
+                        Загрузка...
                     </td>
                 </tr>
             );  
@@ -54,7 +68,8 @@ class MainTable extends React.Component {
 MainTable.propTypes = {
     didMount: PropTypes.func,
     dataLoaded: PropTypes.bool,
-    weblexTable: PropTypes.array
+    weblexTable: PropTypes.array,
+    error: PropTypes.bool
 };
 
 module.exports = {
