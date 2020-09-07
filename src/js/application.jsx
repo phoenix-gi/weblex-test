@@ -15,7 +15,8 @@ class Application extends React.Component {
             currentPage: 0,
             numberOfPages: 1,
             rowsPerPage: 5,
-            error: false
+            error: false,
+            sortOrderAsc: true
         };
     }
 
@@ -58,6 +59,31 @@ class Application extends React.Component {
         });
     }
 
+    onSort(field) {
+        let weblexTable = JSON.parse(JSON.stringify(this.state.weblexTable));
+        weblexTable.sort((a, b) => {
+            let valueA = a[field];
+            let valueB = b[field];
+            if(field=="distance") {
+                valueA = parseFloat(valueA);
+                valueB = parseFloat(valueB);
+            }
+            if(field=="amount") {
+                valueA = parseInt(valueA);
+                valueB = parseInt(valueB);   
+            }
+
+            if(valueA < valueB) {
+                return this.state.sortOrderAsc ? -1 : 1;
+            }
+            if(valueA > valueB) {
+                return this.state.sortOrderAsc ? 1 : -1;
+            }
+            return 0;
+        });
+        this.setState({weblexTable: weblexTable, sortOrderAsc: !this.state.sortOrderAsc});
+    }
+
     render() {
         const currentPage = this.state.currentPage;
         const rowsPerPage = this.state.rowsPerPage;
@@ -83,6 +109,7 @@ class Application extends React.Component {
                            dataLoaded={dataLoaded}
                            weblexTable={rows}
                            error={this.state.error}
+                           onSort={this.onSort.bind(this)}
                 />
                 <Pagination numberOfPages={numberOfPages}
                             currentPage={currentPage}

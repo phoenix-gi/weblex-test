@@ -55,9 +55,9 @@ class MainTable extends React.Component {
             <table id="main_table">
                 <tr>
                     <th>Дата</th>
-                    <th>Название</th>
-                    <th>Количество</th>
-                    <th>Расстояние</th>
+                    <th className="clickable_column" onClick={this.props.onSort.bind(this, "name")}>Название</th>
+                    <th className="clickable_column" onClick={this.props.onSort.bind(this, "amount")}>Количество</th>
+                    <th className="clickable_column" onClick={this.props.onSort.bind(this, "distance")}>Расстояние</th>
                 </tr>
                 {rows}
             </table>
@@ -69,7 +69,8 @@ MainTable.propTypes = {
     didMount: PropTypes.func,
     dataLoaded: PropTypes.bool,
     weblexTable: PropTypes.array,
-    error: PropTypes.bool
+    error: PropTypes.bool,
+    onSort: PropTypes.func
 };
 
 module.exports = {

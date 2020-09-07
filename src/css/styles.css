@@ -26,3 +26,8 @@
 .page_button_selected {
     background-color: blue;
 }
+
+.clickable_column:hover {
+    background-color: red;
+    cursor: pointer;
+}
