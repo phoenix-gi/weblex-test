@@ -8,6 +8,10 @@
     border: 1px solid green;
 }
 
+.block_inline {
+    display: inline-block;
+}
+
 .page_button {
     display: inline-block;
     padding-left: 2px;

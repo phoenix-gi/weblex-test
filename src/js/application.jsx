@@ -4,6 +4,7 @@ const axios = require('axios');
 
 const MainTable = require('./main_table.jsx').MainTable;
 const Pagination = require('./pagination.jsx').Pagination;
+const Filter = require('./filter.jsx').Filter;
 
 class Application extends React.Component {
     constructor(props) {
@@ -17,8 +18,20 @@ class Application extends React.Component {
         };
     }
 
-    loadAllData() {
-        axios.get("build/api.php?query=get_all_rows").then(request => {
+    getTableData(filterParams = []) {
+        let filter = "";
+        for(let i = 0; i < filterParams.length; i++) {
+            let param = filterParams[i];
+            filter += param.key+"="+param.value;
+            if(i < filterParams.length - 1) {
+                filter+="&";
+            }
+        }
+        let url = "build/api.php?query=get_table_data";
+        if(filter != "") {
+            url += "&" + filter;
+        }
+        axios.get(url).then(request => {
             if(request.status == 200) {
                 let numberOfPages = Math.ceil(request.data.length / this.state.rowsPerPage);
                 this.setState({
@@ -29,6 +42,7 @@ class Application extends React.Component {
                 });
             }
         });
+        this.setState({dataLoaded: false});
     }
 
     currentPageChanged(selectedPage) {
@@ -53,11 +67,12 @@ class Application extends React.Component {
 
         return (
             <div>
+                <Filter onFilter={this.getTableData.bind(this)}/>
                 <Pagination numberOfPages={numberOfPages}
                             currentPage={currentPage}
                             onPageSelect={this.currentPageChanged.bind(this)}
                 />
-                <MainTable didMount={this.loadAllData.bind(this)}
+                <MainTable didMount={this.getTableData.bind(this)}
                            dataLoaded={dataLoaded}
                            weblexTable={rows}
                 />
